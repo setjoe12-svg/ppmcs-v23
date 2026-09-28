@@ -1,27 +1,35 @@
-# PPMCS v2.3 — Mobile Field Operations (Multi-user Pilot)
+# PPMCS Pilot v2
 
-This build advances PPMCS from the local JSON pilot to a multi-user PostgreSQL-backed field system.
+Colourful standalone mobile-first prototype based on the approved PPMCS dashboard visual direction.
 
-## Includes
-- iPhone/Android responsive PWA
-- Secure login with JWT
-- Admin and field-engineer roles
-- PostgreSQL database
-- 8 current projects pre-seeded
-- Daily field reports
-- Site photographs from camera/gallery
-- Offline local queue with cloud synchronisation
-- Audit log
-- Photo file storage
-- Admin export endpoint
-- Docker Compose for app + PostgreSQL
+## Included
+- Portfolio dashboard
+- Project register
+- Programme/WBS placeholder
+- Daily progress entry
+- Progress picture capture/upload
+- Weather module
+- Weekly/monthly performance views
+- S-Curve & EVM placeholder
+- Reports / CSV export
+- Issues & Risks
+- Offline-first PWA behavior
 
-## Quick test with Docker
-1. Install Docker Desktop.
-2. Copy `.env.production.example` to `.env` and change the secrets.
-3. Run `docker compose up --build`.
-4. Open `http://localhost:8080`.
-5. Default pilot login comes from ADMIN_EMAIL / ADMIN_PASSWORD in compose; change it before deployment.
+## Pilot use
+Open `index.html` through a local/static web server or HTTPS host, then choose **Install App / Add to Home Screen** in a supported browser.
 
-## Production deployment
-Use HTTPS, a managed PostgreSQL database, object storage for photos, a long random JWT secret, backups, and a proper identity provider (Microsoft Entra ID recommended for a Microsoft 365 environment).
+## Production roadmap
+Authentication and roles; secure cloud database; live weather API; cloud photo storage; GPS/project coordinates; P6/MSP baseline import; weighted progress engine; S-curve; SPI/CPI/EVM; audit trail; approvals; management web portal; Android/iOS packaging; Windows desktop packaging.
+
+
+## PPMCS v2.3 update
+
+- Added a sign-in screen for the pilot deployment.
+- Updated dashboard identity to **Engr. Adewale Joseph — Assistant General Manager – Roads & Bridges**.
+- Added sign-out and session handling for the pilot browser session.
+- The current login is **pilot/client-side authentication only**. It is not suitable for production security because credentials are contained in the static application. Before external/organizational release, replace it with server-side authentication connected to PostgreSQL/identity provider.
+- Pilot username: `adewale.joseph`
+- Pilot password: `PPMCS-Pilot-2026`
+
+### Deployment
+Upload the contents of this folder to the existing Render web service and deploy. No database recreation is required for this UI update.

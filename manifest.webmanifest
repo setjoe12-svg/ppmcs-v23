@@ -1,12 +1,9 @@
 {
-  "name": "PPMCS v2.1 – Mobile Field Operations",
+  "name": "PPMCS \u2013 Project Performance Monitoring & Control System",
   "short_name": "PPMCS",
   "start_url": "./",
-  "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#eef3f7",
   "theme_color": "#063b73",
-  "description": "PPMCS mobile-first project control and field reporting app",
-  "icons": []
+  "description": "Standalone project performance monitoring pilot"
 }
