@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ppmcs-v26
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ppmcs-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PPMCS_SEED_PASSWORD
+        sync: false
+databases:
+  - name: ppmcs-db
+    plan: free

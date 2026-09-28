@@ -1,35 +1,33 @@
-# PPMCS Pilot v2
+# PPMCS v2.5 — Rhema Project BCEGI
 
-Colourful standalone mobile-first prototype based on the approved PPMCS dashboard visual direction.
+## Scope
+v2.5 implements the first functional data layer for the Executive Portfolio Dashboard and Project Control Centre.
 
-## Included
-- Portfolio dashboard
-- Project register
-- Programme/WBS placeholder
-- Daily progress entry
-- Progress picture capture/upload
-- Weather module
-- Weekly/monthly performance views
-- S-Curve & EVM placeholder
-- Reports / CSV export
-- Issues & Risks
-- Offline-first PWA behavior
+- PostgreSQL schema for users, projects, WBS/activities, daily reports, risks and audit log.
+- JWT authentication and role-ready API.
+- Portfolio API and project-detail API.
+- Daily report API ready for offline queue synchronization.
+- Render deployment configuration for a PostgreSQL database + Node web service.
+- Frontend remains usable in pilot/offline mode when the API is not connected.
 
-## Pilot use
-Open `index.html` through a local/static web server or HTTPS host, then choose **Install App / Add to Home Screen** in a supported browser.
+## Render deployment
+1. Create a Render PostgreSQL database named `ppmcs-db` (free/Oregon is acceptable for the pilot).
+2. Create a Node Web Service from this folder, or use `render.yaml`.
+3. Set `DATABASE_URL` to the database connection string and generate `JWT_SECRET`.
+4. Set `PPMCS_SEED_PASSWORD` to a temporary administrator password before first deployment.
+5. Deploy and open `/api/health`. It should return `database: connected`.
+6. Login with username `adewale.joseph` and the seed password.
 
-## Production roadmap
-Authentication and roles; secure cloud database; live weather API; cloud photo storage; GPS/project coordinates; P6/MSP baseline import; weighted progress engine; S-curve; SPI/CPI/EVM; audit trail; approvals; management web portal; Android/iOS packaging; Windows desktop packaging.
+## Security
+Change the seed password immediately after first login and replace the pilot authentication with the organisation's production identity provider before production use.
 
 
-## PPMCS v2.3 update
-
-- Added a sign-in screen for the pilot deployment.
-- Updated dashboard identity to **Engr. Adewale Joseph — Assistant General Manager – Roads & Bridges**.
-- Added sign-out and session handling for the pilot browser session.
-- The current login is **pilot/client-side authentication only**. It is not suitable for production security because credentials are contained in the static application. Before external/organizational release, replace it with server-side authentication connected to PostgreSQL/identity provider.
-- Pilot username: `adewale.joseph`
-- Pilot password: `PPMCS-Pilot-2026`
-
-### Deployment
-Upload the contents of this folder to the existing Render web service and deploy. No database recreation is required for this UI update.
+## PPMCS v2.6 — Steps 4–7
+- QA/QC inspections and NCR register
+- HSE event register
+- Risk, issues and management actions
+- Cost and commercial ledger
+- Executive/portfolio reporting and CSV export
+- Administration, roles and audit trail
+- Authenticated technical-control APIs
+- PostgreSQL schema migrations
