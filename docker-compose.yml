@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ppmcs
+      POSTGRES_USER: ppmcs
+      POSTGRES_PASSWORD: ppmcs
+    volumes:
+      - ppmcs_pg:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      PORT: 8080
+      DATABASE_URL: postgres://ppmcs:ppmcs@db:5432/ppmcs
+      JWT_SECRET: replace-with-a-long-random-secret
+      ADMIN_EMAIL: admin@ppmcs.local
+      ADMIN_PASSWORD: ChangeMe123!
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+volumes:
+  ppmcs_pg:

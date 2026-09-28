@@ -1,0 +1,12 @@
+{
+  "name": "PPMCS v2.1 – Mobile Field Operations",
+  "short_name": "PPMCS",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef3f7",
+  "theme_color": "#063b73",
+  "description": "PPMCS mobile-first project control and field reporting app",
+  "icons": []
+}
